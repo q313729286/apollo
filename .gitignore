@@ -1,0 +1,16 @@
+/common/trunk/common/bin
+
+/common/trunk/common-test/bin
+
+/common/trunk/common-android/bin
+/common/trunk/common-android/gen
+
+/common/trunk/common-android-test/bin
+/common/trunk/common-android-test/gen
+
+/multimedia/trunk/multimedia/bin
+/multimedia/trunk/multimedia/gen
+
+/TF-IDF/trunk/TF-IDF/bin
+
+/WebSpider/trunk/WebSpider/bin
