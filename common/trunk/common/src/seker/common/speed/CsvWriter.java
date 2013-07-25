@@ -1,4 +1,8 @@
+/*
+ * Copyright (C) 2012 Baidu Inc. All rights reserved.
+ */
 package seker.common.speed;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -11,7 +15,7 @@ import java.io.UnsupportedEncodingException;
  * @author Liu Xinjian
  *
  */
-public class CsvWriter {
+class CsvWriter {
     /** 默认编码 */
     public static final String GB2312 = "gb2312";
     
@@ -38,8 +42,7 @@ public class CsvWriter {
      * @throws UnsupportedEncodingException 不支持的编码格式
      * @throws FileNotFoundException 不能创建文件
      */
-    public CsvWriter(File filePath, boolean append)
-            throws UnsupportedEncodingException, FileNotFoundException {
+    public CsvWriter(File filePath, boolean append) throws UnsupportedEncodingException, FileNotFoundException {
         this(filePath, append, GB2312);
     }
     

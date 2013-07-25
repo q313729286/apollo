@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.http.params.HttpConnectionParams;
-
-import seker.common.net.ProxyHttpClient;
 import android.content.Context;
 import android.text.TextUtils;
 
@@ -82,22 +79,6 @@ public final class Utility {
         }
         Date date = new Date();
         return String.format("%s.%s", sDateFormat.format(date), suffix);
-    }
-    
-    /**
-     * 创建一个 http client。
-     * @param context Context.
-     * @return ProxyHttpClient
-     */
-    public static ProxyHttpClient createHttpClient(Context context) {
-        ProxyHttpClient httpclient = new ProxyHttpClient(context);
-//      httpclient.getParams().setParameter("Accept-Encoding", "gzip");
-        
-        final int httpTimeout = 30000;
-        final int socketTimeout = 50000;
-        HttpConnectionParams.setConnectionTimeout(httpclient.getParams(), httpTimeout);
-        HttpConnectionParams.setSoTimeout(httpclient.getParams(), socketTimeout);
-        return httpclient;
     }
     
     /**
