@@ -16,6 +16,9 @@ class TimeInfo {
     /** 运行的线程ID */
     final long thread;
     
+    /** 功能 */
+    final String feature;
+    
     /** 模块TAG */
     final String model;
     
@@ -29,14 +32,17 @@ class TimeInfo {
      *            运行的系统时间点
      * @param th
      *            运行的线程ID
+     * @param fe
+     *            功能
      * @param md
      *            模块名称
      * @param ta
      *            模块TAG
      */
-    public TimeInfo(long ti, long th, String md, String ta) {
+    public TimeInfo(long ti, long th, String fe, String md, String ta) {
         time = ti;
         thread = th;
+        feature = fe;
         model = md;
         tag = ta;
     }

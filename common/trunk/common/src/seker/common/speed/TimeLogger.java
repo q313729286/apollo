@@ -27,7 +27,7 @@ public final class TimeLogger {
     static final String DEFAULT_TIME_LOG_PATH = "timelogger_%s.csv";
 
     /** 单实例 */
-    private static TimeLogger sInstance = new TimeLogger();
+    private static volatile TimeLogger sInstance = new TimeLogger();
 
     /** TimeInfo缓存*/
     private List<TimeInfo> mTimeInfos;
@@ -41,12 +41,13 @@ public final class TimeLogger {
 
     /**
      * 记录一条时间Log
-     * @param model 模块名
-     * @param tag   时间点Tag
+     * @param feture    功能
+     * @param model     模块名
+     * @param tag       时间点Tag
      */
-    public static void record(String model, String tag) {
+    public static void record(String feture, String model, String tag) {
         if (null != model && model.length() > 0 && null != tag && tag.length() > 0) {
-            TimeInfo info = new TimeInfo(System.currentTimeMillis(), Thread.currentThread().getId(), model, tag);
+            TimeInfo info = new TimeInfo(System.currentTimeMillis(), Thread.currentThread().getId(), feture, model, tag);
             sInstance.mTimeInfos.add(info);
         }
     }
@@ -72,7 +73,7 @@ public final class TimeLogger {
      *              目标文件名
      * @throws IOException 如果目标目录没有写权限，会抛出IO异常
      */
-    public static void export(String dir, String file) throws IOException {
+    public static synchronized void export(String dir, String file) throws IOException {
         File path = new File(dir);
         if (!path.exists()) {
             if (!path.mkdirs()) {
@@ -82,14 +83,15 @@ public final class TimeLogger {
 
         
         CsvWriter writer = new CsvWriter(new File(path, file), true);
-        String[] row = new String[] { "SystemTime", "Thread", "Model", "TAG" };
+        String[] row = new String[] { "SystemTime", "Thread", "Feture", "Model", "TAG" };
         writer.writeRow(row);
 
         for (TimeInfo info : sInstance.mTimeInfos) {
             row[0] = String.valueOf(info.time); 
             row[1] = String.valueOf(info.thread);
-            row[2] = info.model; // SUPPRESS CHECKSTYLE: 这里的index数字是靠程序员来保证
-            row[3] = info.tag;   // SUPPRESS CHECKSTYLE: 同上
+            row[2] = info.feature; // SUPPRESS CHECKSTYLE: 这里的index数字是靠程序员来保证
+            row[3] = info.model;   // SUPPRESS CHECKSTYLE: 同上
+            row[4] = info.tag;     // SUPPRESS CHECKSTYLE: 同上
             writer.writeRow(row);
         }
         writer.close();
