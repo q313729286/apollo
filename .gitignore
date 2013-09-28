@@ -14,3 +14,7 @@
 /TF-IDF/trunk/TF-IDF/bin
 
 /WebSpider/trunk/WebSpider/bin
+
+/CollaborativeFiltering/trunk/CollaborativeFiltering/bin
+/CollaborativeFiltering/trunk/CollaborativeFiltering/*.dat
+/CollaborativeFiltering/trunk/ml-10M100K
