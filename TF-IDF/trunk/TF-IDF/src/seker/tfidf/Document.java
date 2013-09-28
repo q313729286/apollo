@@ -8,9 +8,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 
-import seker.common.utils.StreamUtils;
-import seker.common.utils.StreamUtils.Word;
-
 public class Document implements Comparator<Word>{
     
     Word[] words;
@@ -41,7 +38,7 @@ public class Document implements Comparator<Word>{
         } else {
             // System.out.println(file.getPath());
             try {
-                wordsHashMap = StreamUtils.streamToWords(new FileInputStream(file), "UTF-8");
+                wordsHashMap = Word.streamToWords(new FileInputStream(file), "UTF-8");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

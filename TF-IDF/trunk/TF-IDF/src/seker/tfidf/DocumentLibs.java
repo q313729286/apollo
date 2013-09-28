@@ -7,8 +7,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import seker.common.utils.StreamUtils.Word;
-
 public class DocumentLibs extends Document {
     List<Document> docs;
     

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Baidu Inc. All rights reserved.
+ * Copyright (C) 2013 Seker. All rights reserved.
  */
 package seker.common.utils;
 
